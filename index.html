@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEADS - HARI ENGINEERING AND DESIGN SOLUTIONS</title>
+    <meta name="description" content="Professional Electrical, Instrumentation & Control, and Telecom engineering consultancy for industrial and infrastructure projects." />
+    <style>
+        /* --- LOGO-BASED VARIABLES & FONTS --- */
+        :root {
+            /* Colors extracted from logo_0.png */
+            --color-primary: #050750;      /* Deep Navy Blue */
+            --color-secondary: #666F8A;    /* Medium Gray */
+            --color-accent: #FF9900;       /* Safety Orange for CTAs */
+            --color-background: #FFFFFF;   /* Pure White */
+            --color-text-main: #333333;    /* Dark Gray for readability */
+            --color-text-light: #FFFFFF;   /* White for text on dark backgrounds */
+
+            /* Fonts selected to match logo_0.png's strong, structured, sans-serif look */
+            --font-heading: 'Arial Black', 'Impact', sans-serif; /* Matches "HEADS" weight */
+            --font-body: 'Segoe UI', 'Roboto', sans-serif;         /* Clean, professional sans-serif */
+            --font-logo: 'Arial Black', sans-serif;                  /* Specific match for "HEADS" */
+        }
+
+        /* --- RESET & BASIC STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-background);
+            color: var(--color-text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            letter-spacing: -0.5px; /* Tight letter spacing to match logo */
+            margin-bottom: 1rem;
+        }
+
+        p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+
+        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+
+        /* --- TOP BAR (Updated with new location/email) --- */
+        .top-bar {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            padding: 0.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar-info span { margin-left: 15px; }
+        .top-bar-info strong { color: var(--color-accent); }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background-color: var(--color-background);
+            padding: 1rem 5%;
+            border-bottom: 2px solid #f0f0f0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+	.logo-container img {
+            height: 80px; /* Adjust based on your SVG dimensions */
+            width: auto;
+            display: block;
+        }
+
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a {
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-primary);
+            position: relative;
+            padding-bottom: 5px;
+        }
+        nav ul li a:hover, nav ul li a.active { color: var(--color-accent); }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: 0; left: 0;
+            background-color: var(--color-accent);
+            transition: width 0.3s;
+        }
+        nav ul li a:hover::after { width: 100%; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: #f4f7f6; /* Very light gray for contrast */
+            padding: 8rem 5%;
+            text-align: center;
+            background-image: radial-gradient(circle, #e0e0e0 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+        .hero p { max-width: 600px; margin: 0 auto 2.5rem; font-size: 1.2rem; }
+
+        .btn-group { display: flex; gap: 20px; justify-content: center; margin-top: 3rem; }
+        .btn {
+            padding: 15px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 2px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn:active { transform: scale(0.98); }
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            border: 2px solid var(--color-primary);
+        }
+        .btn-primary:hover { background-color: transparent; color: var(--color-primary); }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+        .btn-secondary:hover { background-color: var(--color-primary); color: var(--color-text-light); }
+
+        /* --- GENERAL PAGE LAYOUT --- */
+        main { padding: 4rem 5%; flex-grow: 1; }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        /* --- AT A GLANCE --- */
+        .at-a-glance {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: -3rem; /* Overlaps hero slightly for design effect */
+            position: relative;
+            z-index: 10;
+        }
+        .glance-card {
+            background-color: var(--color-background);
+            padding: 30px;
+            border-top: 5px solid var(--color-accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .glance-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .glance-card ul { list-style-position: inside; color: var(--color-secondary); }
+        .glance-card ul li { margin-bottom: 5px; font-size: 1.05rem; }
+
+        /* --- WHY HEADS & CONTENT BLOCKS --- */
+        .why-heads { margin-top: 6rem; }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 3rem;
+        }
+        .info-box {
+            padding: 30px;
+            background: #f9f9f9;
+            border-left: 5px solid var(--color-primary);
+        }
+        .info-box h4 { font-size: 1.3rem; margin-bottom: 10px; }
+        .info-box p { font-size: 1rem; color: #666; margin: 0; }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            padding: 4rem 5% 2rem;
+            margin-top: auto;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+        .footer-logo .logo-text { color: var(--color-text-light); }
+        .footer-logo .logo-text span { color: var(--color-secondary); }
+        .footer-links h5 { color: var(--color-accent); text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px; }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 10px; }
+        .footer-links a:hover { color: var(--color-accent); }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: var(--color-secondary);
+        }
+
+        /* --- RESPONSIVE STYLES --- */
+        @media (max-width: 768px) {
+            .top-bar { flex-direction: column; text-align: center; padding: 10px; }
+            .top-bar-info span { margin: 0 10px; }
+            header { flex-direction: column; padding: 1rem; text-align: center; }
+            .logo-container { margin-bottom: 1rem; }
+            nav ul { margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
+            nav ul li { margin: 0 10px 10px; }
+            .hero { padding: 5rem 5%; }
+            .hero h1 { font-size: 2.5rem; }
+            .btn-group { flex-direction: column; gap: 10px; }
+            .at-a-glance { margin-top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Updated Top Bar -->
+    <div class="top-bar">
+        <div>Serving Clients Globally</div>
+        <div class="top-bar-info">
+            <span><strong style="color: #FF9900;">Chennai, Tamil Nadu, India</strong></span>
+            <span>Email: <strong>Info@headsengg.com</strong></span>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <!-- Logo icon recreated in CSS -->
+            <div class="logo-icon">
+                <div class="logo-box-blue"></div>
+                <div class="logo-box-gray"></div>
+            </div>
+            <div class="logo-text">HEAD<span>S</span></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Hero Section (Text updated for better flow) -->
+            <section class="hero">
+                <h1>Engineering Solutions.<br> Designed for Performance.</h1>
+                <p>Hari Engineering and Design Solutions (HEADS) provides premier Electrical, Instrumentation & Control, and E&I engineering consultancy for industrial and infrastructure projects from Concept to Completion.</p>
+                <div class="btn-group">
+                    <a href="#services" class="btn btn-primary">Explore Services</a>
+                    <a href="#contact" class="btn btn-secondary">Discuss Your Project</a>
+                </div>
+            </section>
+
+            <!-- At a Glance Section -->
+            <section class="at-a-glance">
+                <div class="glance-card">
+                    <h3>Engineering Disciplines</h3>
+                    <ul>
+                        <li>Electrical Engineering</li>
+                        <li>Instrumentation & Control</li>
+                        <li>Integrated E&I</li>
+                    </ul>
+                </div>
+                <div class="glance-card">
+                    <h3>Project Types</h3>
+                    <ul>
+                        <li>Greenfield & Brownfield</li>
+                        <li>Facility Modifications</li>
+                        <li>Plant Revamp & Upgrades</li>
+                    </ul>
+                </div>
+                <div class="glance-card">
+                    <h3>Project Lifecycle</h3>
+                    <ul>
+                        <li>Feasibility & Conceptual Study</li>
+                        <li>FEED & Detailed Engineering</li>
+                        <li>Site & Commissioning Support</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Why HEADS Section -->
+            <section id="about" class="why-heads">
+                <h2>Why Choose HEADS?</h2>
+                <p>We combine practical expertise with international standards to deliver structured, digital engineering solutions.</p>
+                <div class="grid-3">
+                    <div class="info-box">
+                        <h4>Practical Expertise</h4>
+                        <p>Our team possesses deep, real-world experience in industrial and infrastructure engineering challenges.</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>International Standards</h4>
+                        <p>Designs are executed in full compliance with global codes (IEC, IEEE, NEC) and client-specific requirements.</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>Digital Approach</h4>
+                        <p>We leverage automation and data processing to ensure accuracy, efficiency, and traceability in all deliverables.</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>Structured Processes</h4>
+                        <p>From documentation to verification, our workflows are engineered for quality and consistency.</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>Global Perspective</h4>
+                        <p>With international project experience, we understand the nuances of multi-national execution.</p>
+                    </div>
+                    <div class="info-box">
+                        <h4>Flexible Support</h4>
+                        <p>We adapt our services to meet specific project needs, providing support from early phase to handover.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section id="contact" style="margin-top: 6rem; text-align: center; background: #0A0D42; color: white; padding: 4rem 2rem;">
+                <h2 style="color: #FF9900;">Have an Engineering Requirement?</h2>
+                <p style="max-width: 600px; margin: 0 auto 2rem;">Whether you require specialist engineering support, a complete package, or support for an existing project, contact HEADS to discuss your needs.</p>
+                <a href="mailto:Info@headsengg.com" class="btn" style="background-color: #FF9900; color: #0A0D42; border: none;">Send an Enquiry to Info@headsengg.com</a>
+            </section>
+        </div>
+    </main>
+
+    <!-- Updated Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-logo">
+                <div class="logo-container">
+                    <div class="logo-text">HEAD<span>S</span></div>
+                </div>
+                <p style="margin-top: 1rem; color: var(--color-text-light);">Hari Engineering and Design Solutions</p>
+                <p><strong>Chennai, Tamil Nadu, India</strong><br>Email: Info@headsengg.com</p>
+            </div>
+            <div class="footer-links">
+                <h5>Core Services</h5>
+                <ul>
+                    <li>Electrical Engineering</li>
+                    <li>Instrumentation & Control</li>
+                    <li>Integrated E&I</li>
+                    <li>Engineering Studies</li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Company</h5>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#industries">Industries</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#quality">Quality</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Connect</h5>
+                <ul>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 HEADS - Hari Engineering and Design Solutions. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for active navigation highlighting
+        const navLinks = document.querySelectorAll('nav ul li a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+                if (current === '' && link.getAttribute('href') === '#') {
+                     link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
